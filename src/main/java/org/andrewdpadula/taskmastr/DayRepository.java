@@ -1,10 +1,8 @@
 package org.andrewdpadula.taskmastr;
 
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.repository.CrudRepository;
 
-public interface DayRepository extends CommandLineRunner{
-
-	Day findAll();
+public interface DayRepository extends CrudRepository<Day, Long>{
 
 	Day findByName(String dayName);
 

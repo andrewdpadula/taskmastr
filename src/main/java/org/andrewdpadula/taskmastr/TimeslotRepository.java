@@ -1,8 +1,8 @@
 package org.andrewdpadula.taskmastr;
 
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.repository.CrudRepository;
 
-public interface TimeslotRepository extends CommandLineRunner{
+public interface TimeslotRepository extends CrudRepository<Timeslot, Long>{
 
 	Timeslot findOne(Long timeslotId);
 
