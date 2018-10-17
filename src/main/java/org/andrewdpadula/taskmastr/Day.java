@@ -1,8 +1,11 @@
 package org.andrewdpadula.taskmastr;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Day {
@@ -14,11 +17,17 @@ public class Day {
 	private String dayImage;
 	private String dayNotes;
 
+	@OneToMany(mappedBy = "day")
+	private Collection<Timeslot> timeslots;
+
+	@OneToMany(mappedBy = "day")
+	private Collection<Task> tasks;
+
 	public Day() {
 
 	}
 
-	public Day(boolean isAWeekday) {
+	public Day(String dayName, boolean isAWeekday, String dayImage, String dayNotes) {
 		this.dayName = dayName;
 		this.isAWeekday = isAWeekday;
 		this.dayImage = dayImage;
@@ -64,6 +73,7 @@ public class Day {
 	public void setDayNotes(String dayNotes) {
 		this.dayNotes = dayNotes;
 	}
+
 	@Override
 	public String toString() {
 		return "Day: " + dayName;
