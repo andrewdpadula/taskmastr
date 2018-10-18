@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,6 +16,7 @@ public class Day {
 	private String dayName;
 	private boolean isAWeekday;
 	private String dayImage;
+	@Lob
 	private String dayNotes;
 
 	@OneToMany(mappedBy = "day")
@@ -38,44 +40,28 @@ public class Day {
 		return dayId;
 	}
 
-	public void setDayId(long dayId) {
-		this.dayId = dayId;
-	}
-
 	public String getDayName() {
 		return dayName;
-	}
-
-	public void setDayName(String dayName) {
-		this.dayName = dayName;
 	}
 
 	public boolean isAWeekday() {
 		return isAWeekday;
 	}
 
-	public void setAWeekday(boolean isAWeekday) {
-		this.isAWeekday = isAWeekday;
-	}
-
 	public String getDayImage() {
 		return dayImage;
-	}
-
-	public void setDayImage(String dayImage) {
-		this.dayImage = dayImage;
 	}
 
 	public String getDayNotes() {
 		return dayNotes;
 	}
 
-	public void setDayNotes(String dayNotes) {
-		this.dayNotes = dayNotes;
+	public Collection<Timeslot> getTimeslots() {
+		return timeslots;
 	}
 
 	@Override
 	public String toString() {
-		return "Day: " + dayName;
+		return dayName;
 	}
 }

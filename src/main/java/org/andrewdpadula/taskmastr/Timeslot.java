@@ -17,6 +17,7 @@ public class Timeslot {
 	@GeneratedValue
 	private long timeslotId;
 	private String timeslotName;
+	@Lob
 	private String timeslotNotes;
 
 	@OneToMany(mappedBy = "timeslot")
@@ -24,7 +25,6 @@ public class Timeslot {
 	private Collection<Task> tasks;
 
 	public Timeslot(String timeslotName, String timeslotNotes, Collection<Task> tasks) {
-		;
 		this.timeslotName = timeslotName;
 		this.timeslotNotes = timeslotNotes;
 		this.tasks = tasks;
@@ -32,7 +32,7 @@ public class Timeslot {
 
 	public Timeslot() {
 	}
-	
+
 	@ManyToOne
 	@JsonIgnore
 	private Day day;
@@ -41,33 +41,25 @@ public class Timeslot {
 		return timeslotId;
 	}
 
-	public void setTimeslotId(long timeslotId) {
-		this.timeslotId = timeslotId;
-	}
-
 	public String getTimeslotName() {
 		return timeslotName;
-	}
-
-	public void setTimeslotName(String timeslotName) {
-		this.timeslotName = timeslotName;
 	}
 
 	public String getTimeslotNotes() {
 		return timeslotNotes;
 	}
 
-	public void setTimeslotNotes(String timeslotNotes) {
-		this.timeslotNotes = timeslotNotes;
-	}
-
 	public Collection<Task> getTasks() {
 		return tasks;
 	}
 
-	public void setTasks(Collection<Task> tasks) {
-		this.tasks = tasks;
+	public Day getDay() {
+		return day;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return timeslotName;
+	}
+
 }

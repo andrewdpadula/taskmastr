@@ -14,8 +14,9 @@ public class Task {
 	@GeneratedValue
 	private Long taskId;
 	private String taskName;
+	@Lob
 	private String taskNotes;
-	
+
 	@ManyToOne
 	@JsonIgnore
 	private Day day;
@@ -36,31 +37,21 @@ public class Task {
 		return taskName;
 	}
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
-	}
-
 	public String getTaskNotes() {
 		return taskNotes;
-	}
-
-	public void setTaskNotes(String taskNotes) {
-		this.taskNotes = taskNotes;
 	}
 
 	public Day getDay() {
 		return day;
 	}
 
-	public void setDay(Day day) {
-		this.day = day;
-	}
-
 	public Timeslot getTimeslot() {
 		return timeslot;
 	}
 
-	public void setTimeslot(Timeslot timeslot) {
-		this.timeslot = timeslot;
+	@Override
+	public String toString() {
+		return taskName;
 	}
+
 }
